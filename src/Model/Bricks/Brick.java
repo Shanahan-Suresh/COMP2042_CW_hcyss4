@@ -1,10 +1,11 @@
-package test;
+package Model.Bricks;
 
 import java.awt.*;
 import java.awt.Point;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Point2D;
 import java.util.Random;
+import Model.Balls.*;
 
 /**
  * Created by filippo on 04/09/16.

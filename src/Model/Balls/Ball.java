@@ -1,4 +1,4 @@
-package test;
+package Model.Balls;
 
 import java.awt.*;
 import java.awt.geom.Point2D;
