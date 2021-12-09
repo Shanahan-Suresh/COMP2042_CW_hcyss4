@@ -78,7 +78,7 @@ public class GameBoard extends JComponent implements KeyListener, MouseListener,
         //initialize the first level
         wall.nextLevel();
 
-        gameTimer = new Timer(10, e ->startTimer());
+        gameTimer = new Timer(10, e -> startTimer());
     }
 
     private void startTimer() {
@@ -110,6 +110,7 @@ public class GameBoard extends JComponent implements KeyListener, MouseListener,
                 gameTimer.stop();
             }
         }
+        repaint();
     }
 
     private void initialize(){
@@ -295,7 +296,7 @@ public class GameBoard extends JComponent implements KeyListener, MouseListener,
                         gameTimer.start();
                 break;
 
-            case KeyEvent.VK_F1:
+            case KeyEvent.VK_Q:
                 if(keyEvent.isAltDown() && keyEvent.isShiftDown())
                     debugConsole.setVisible(true);
 
