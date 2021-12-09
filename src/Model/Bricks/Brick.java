@@ -20,7 +20,7 @@ abstract public class Brick  {
     public static final int LEFT_IMPACT = 300;
     public static final int RIGHT_IMPACT = 400;
 
-    Shape brickFace;
+    protected Shape brickFace;
 
     private Color borderColour;
     private Color innerColour;
@@ -43,7 +43,7 @@ abstract public class Brick  {
         return new Rectangle(position, size);
     };
 
-    public  boolean setImpact(Point2D point , int direction){
+    public boolean setImpact(Point2D point , int direction){
         if(broken)
             return false;
         impact();
