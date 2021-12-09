@@ -1,6 +1,6 @@
 /*
  *  Brick Destroy - A simple Arcade video game
- *   Copyright (C) 2017  Filippo Ranza
+ *   Copyright (C) 2021 Shanahan Suresh
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -21,6 +21,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+
+import Controller.GameBoard;
+import Model.Walls.Wall;
+import Model.Balls.Ball;
 
 public class DebugConsole extends JDialog implements WindowListener{
 
@@ -43,7 +47,6 @@ public class DebugConsole extends JDialog implements WindowListener{
         debugPanel = new DebugPanel(wall);
         this.add(debugPanel,BorderLayout.CENTER);
 
-
         this.pack();
     }
 
@@ -60,7 +63,14 @@ public class DebugConsole extends JDialog implements WindowListener{
     private void setLocation(){
         int x = ((owner.getWidth() - this.getWidth()) / 2) + owner.getX();
         int y = ((owner.getHeight() - this.getHeight()) / 2) + owner.getY();
-        this.setLocation(x,y);
+        this.setLocation(x, y);
+    }
+
+    @Override
+    public void windowActivated(WindowEvent windowEvent) {
+        setLocation();
+        Ball ball = wall.ball;
+        debugPanel.setValues(ball.getSpeedX(), ball.getSpeedY());
     }
 
 
@@ -87,13 +97,6 @@ public class DebugConsole extends JDialog implements WindowListener{
     @Override
     public void windowDeiconified(WindowEvent windowEvent) {
 
-    }
-
-    @Override
-    public void windowActivated(WindowEvent windowEvent) {
-        setLocation();
-        Ball b = wall.ball;
-        debugPanel.setValues(b.getSpeedX(),b.getSpeedY());
     }
 
     @Override
