@@ -17,22 +17,22 @@ public class Crack {
         public static final int HORIZONTAL = 200;
 
         private static Random rnd = new Random();
+        private final Brick brick;
 
         private GeneralPath crack;
         private int crackDepth;
         private int steps;
 
 
-        public Crack(int crackDepth, int steps){
-
+        public Crack(Brick brick, int crackDepth, int steps){
+            this.brick = brick;
             crack = new GeneralPath();
             this.crackDepth = crackDepth;
             this.steps = steps;
-
         }
 
-    protected void makeCrack(Point2D point, int direction, Rectangle bounds){
-
+    protected void makeCrack(Point2D point, int direction){
+        Rectangle bounds = brick.brickFace.getBounds();
         Point impact = new Point((int)point.getX(),(int)point.getY());
         Point start = new Point();
         Point end = new Point();
@@ -91,11 +91,11 @@ public class Crack {
             if (inMiddle(i, CRACK_SECTIONS, steps))
                 y += jumps(jump, JUMP_PROBABILITY);
 
-            path.lineTo(x,y);
+            path.lineTo(x, y);
 
         }
 
-        path.lineTo(end.x,end.y);
+        path.lineTo(end.x, end.y);
         crack.append(path,true);
     }
 
@@ -123,17 +123,17 @@ public class Crack {
     private Point makeRandomPoint(Point from,Point to, int direction){
 
         Point out = new Point();
-        int pos;
+        int position;
 
         switch(direction){
             case HORIZONTAL:
-                pos = rnd.nextInt(to.x - from.x) + from.x;
-                out.setLocation(pos,to.y);
+                position = rnd.nextInt(to.x - from.x) + from.x;
+                out.setLocation(position, to.y);
                 break;
 
             case VERTICAL:
-                pos = rnd.nextInt(to.y - from.y) + from.y;
-                out.setLocation(to.x,pos);
+                position = rnd.nextInt(to.y - from.y) + from.y;
+                out.setLocation(to.x, position);
                 break;
         }
         return out;

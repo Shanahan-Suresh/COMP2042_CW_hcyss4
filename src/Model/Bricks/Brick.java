@@ -1,9 +1,9 @@
 package Model.Bricks;
+import Model.Balls.Ball;
 
 import java.awt.*;
 import java.awt.Point;
 import java.awt.geom.Point2D;
-import Model.Balls.Ball;
 
 /**
  * Created by filippo on 04/09/16.
@@ -53,15 +53,6 @@ abstract public class Brick  {
     public Shape getBrick() {
         return brickFace;
     }
-
-    public Color getBorderColour(){
-        return  borderColour;
-    }
-
-    public Color getInnerColour(){
-        return innerColour;
-    }
-
 
     public final int findImpact(Ball ball){
         if(broken)

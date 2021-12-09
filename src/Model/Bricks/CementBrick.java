@@ -11,8 +11,8 @@ public class CementBrick extends Brick {
     private static final Color DEF_BORDER = new Color(217, 199, 175);
     private static final int CEMENT_STRENGTH = 2;
 
-    private Crack crack = new Crack(DEF_CRACK_DEPTH,DEF_STEPS);
-    private Shape brickFace = super.brickFace;;
+    private Crack crack = new Crack(this, DEF_CRACK_DEPTH, DEF_STEPS);
+    private Shape brickFace = super.brickFace;
 
 
     public CementBrick(Point point, Dimension size){
@@ -24,8 +24,9 @@ public class CementBrick extends Brick {
         if(super.isBroken())
             return false;
         super.impact();
+
         if(!super.isBroken()){
-            crack.makeCrack(point, direction, brickFace.getBounds());
+            crack.makeCrack(point, direction);
             updateBrick();
             return false;
         }
@@ -41,8 +42,16 @@ public class CementBrick extends Brick {
     }
 
     @Override
+    public Shape getBrick() {
+        return brickFace;
+    }
+
+    @Override
     public void repair(){
         super.repair();
         crack.reset();
+        brickFace = super.brickFace;
     }
+
+
 }

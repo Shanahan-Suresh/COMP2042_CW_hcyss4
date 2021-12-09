@@ -18,6 +18,7 @@
 package Model.Bricks;
 
 import java.awt.*;
+import java.awt.geom.Point2D;
 import java.util.Random;
 import java.awt.Point;
 
@@ -29,16 +30,31 @@ public class SteelBrick extends Brick {
     private static final int STEEL_STRENGTH = 1;
     private static final double STEEL_PROBABILITY = 0.4;
 
-    private Random rnd = new Random();;
+    private Random rnd = new Random();
+    private Shape brickFace = super.brickFace;
 
     public SteelBrick(Point point, Dimension size){
         super(point, size, DEF_BORDER, DEF_INNER, STEEL_STRENGTH);
+    }
+
+
+    public boolean setImpact(Point2D point , int direction){
+        if(super.isBroken())
+            return false;
+
+        impact();
+        return super.isBroken();
     }
 
     public void impact(){
         if(rnd.nextDouble() < STEEL_PROBABILITY){
             super.impact();
         }
+    }
+
+    @Override
+    public Shape getBrick() {
+        return brickFace;
     }
 
 }
