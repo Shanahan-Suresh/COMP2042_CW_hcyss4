@@ -1,6 +1,6 @@
 /*
  *  Brick Destroy - A simple Arcade video game
- *   Copyright (C) 2017  Filippo Ranza
+ *   Copyright (C) 2021 Shanahan Suresh
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -15,15 +15,13 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package test;
+package Model;
 
 import java.awt.*;
-import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
+import Model.Balls.Ball;
 
 
 public class Player {
-
 
     public static final Color BORDER_COLOR = Color.GREEN.darker().darker();
     public static final Color INNER_COLOR = Color.GREEN;
@@ -37,7 +35,7 @@ public class Player {
     private int max;
 
 
-    public Player(Point ballPoint,int width,int height,Rectangle container) {
+    public Player(Point ballPoint, int width, int height, Rectangle container) {
         this.ballPoint = ballPoint;
         moveAmount = 0;
         playerFace = makeRectangle(width, height);
@@ -47,12 +45,12 @@ public class Player {
     }
 
     private Rectangle makeRectangle(int width,int height){
-        Point p = new Point((int)(ballPoint.getX() - (width / 2)),(int)ballPoint.getY());
-        return  new Rectangle(p,new Dimension(width,height));
+        Point point = new Point( (int)(ballPoint.getX()-(width / 2)), (int)ballPoint.getY());
+        return  new Rectangle(point, new Dimension(width, height));
     }
 
-    public boolean impact(Ball b){
-        return playerFace.contains(b.getPosition()) && playerFace.contains(b.down) ;
+    public boolean impact(Ball ball){
+        return playerFace.contains(ball.getPosition()) && playerFace.contains(ball.getDown()) ;
     }
 
     public void move(){
@@ -60,7 +58,7 @@ public class Player {
         if(x < min || x > max)
             return;
         ballPoint.setLocation(x,ballPoint.getY());
-        playerFace.setLocation(ballPoint.x - (int)playerFace.getWidth()/2,ballPoint.y);
+        playerFace.setLocation(ballPoint.x-(int)playerFace.getWidth() / 2,ballPoint.y);
     }
 
     public void moveLeft(){
@@ -79,8 +77,8 @@ public class Player {
         return  playerFace;
     }
 
-    public void moveTo(Point p){
-        ballPoint.setLocation(p);
-        playerFace.setLocation(ballPoint.x - (int)playerFace.getWidth()/2,ballPoint.y);
+    public void moveTo(Point point){
+        ballPoint.setLocation(point);
+        playerFace.setLocation(ballPoint.x-(int)playerFace.getWidth() / 2, ballPoint.y);
     }
 }
