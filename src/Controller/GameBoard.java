@@ -1,6 +1,6 @@
 /*
  *  Brick Destroy - A simple Arcade video game
- *   Copyright (C) 2017  Filippo Ranza
+ *   Copyright (C) 2021  Shanahan Suresh
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -15,13 +15,14 @@
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package test;
+package Controller;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.font.FontRenderContext;
-
+import Model.Balls.Ball;
+import Model.Bricks.Brick;
 
 
 public class GameBoard extends JComponent implements KeyListener,MouseListener,MouseMotionListener {
@@ -59,52 +60,46 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
 
     public GameBoard(JFrame owner){
         super();
-
         strLen = 0;
         showPauseMenu = false;
 
-
-
         menuFont = new Font("Monospaced",Font.PLAIN,TEXT_SIZE);
-
 
         this.initialize();
         message = "";
         wall = new Wall(new Rectangle(0,0,DEF_WIDTH,DEF_HEIGHT),30,3,6/2,new Point(300,430));
 
-        debugConsole = new DebugConsole(owner,wall,this);
+        debugConsole = new DebugConsole(owner, wall, this);
         //initialize the first level
         wall.nextLevel();
 
-        gameTimer = new Timer(10,e ->{
-            wall.move();
-            wall.findImpacts();
-            message = String.format("Bricks: %d Balls %d",wall.getBrickCount(),wall.getBallCount());
-            if(wall.isBallLost()){
-                if(wall.ballEnd()){
-                    wall.wallReset();
-                    message = "Game over";
-                }
+        gameTimer = new Timer(10, e ->startTimer());
+    }
+
+    private void startTimer() {
+        wall.move();
+        wall.findImpacts();
+        message = String.format("Bricks: %d Balls %d", wall.getBrickCount(), wall.getBallCount());
+        if (wall.isBallLost()) {
+            if (wall.ballEnd()) {
+                wall.wallReset();
+                message = "Game over";
+            }
+            wall.ballReset();
+            gameTimer.stop();
+        } else if (wall.isDone()) {
+            if (wall.hasLevel()) {
+                message = "Go to Next Level";
+                gameTimer.stop();
                 wall.ballReset();
+                wall.wallReset();
+                wall.nextLevel();
+            } else {
+                message = "ALL WALLS DESTROYED";
                 gameTimer.stop();
             }
-            else if(wall.isDone()){
-                if(wall.hasLevel()){
-                    message = "Go to Next Level";
-                    gameTimer.stop();
-                    wall.ballReset();
-                    wall.wallReset();
-                    wall.nextLevel();
-                }
-                else{
-                    message = "ALL WALLS DESTROYED";
-                    gameTimer.stop();
-                }
-            }
 
-            repaint();
-        });
-
+        }
     }
 
 
@@ -128,7 +123,7 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
         g2d.setColor(Color.BLUE);
         g2d.drawString(message,250,225);
 
-        drawBall(wall.ball,g2d);
+        drawBall(wall.getBall,g2d);
 
         for(Brick b : wall.bricks)
             if(!b.isBroken())
