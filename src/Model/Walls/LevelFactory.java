@@ -5,6 +5,7 @@ import Model.Bricks.CementBrick;
 import Model.Bricks.ClayBrick;
 import Model.Bricks.SteelBrick;
 
+
 import java.awt.*;
 
 class LevelFactory {
@@ -19,13 +20,13 @@ class LevelFactory {
         int brickOnLine = brickCount / lineCount;
 
         double brickLength = drawArea.getWidth() / brickOnLine;
-        double brickHgt = brickLength / brickSizeRatio;
+        double brickHeight = brickLength / brickSizeRatio;
 
         brickCount += lineCount / 2;
 
         Brick[] temp  = new Brick[brickCount];
 
-        Dimension brickSize = new Dimension((int) brickLength,(int) brickHgt);
+        Dimension brickSize = new Dimension( (int)brickLength, (int)brickHeight);
         Point point = new Point();
 
         int i;
@@ -35,12 +36,12 @@ class LevelFactory {
                 break;
             double x = (i % brickOnLine) * brickLength;
             x =(line % 2 == 0) ? x : (x - (brickLength / 2));
-            double y = (line) * brickHgt;
+            double y = (line) * brickHeight;
             point.setLocation(x,y);
             temp[i] = makeBrick(point, brickSize, type);
         }
 
-        for(double y = brickHgt; i < temp.length; i++, y += 2*brickHgt){
+        for(double y = brickHeight; i < temp.length; i++, y += 2*brickHeight){
             double x = (brickOnLine * brickLength) - (brickLength / 2);
             point.setLocation(x,y);
             temp[i] = new ClayBrick(point, brickSize);
@@ -62,13 +63,13 @@ class LevelFactory {
         int centerRight = brickOnLine / 2 + 1;
 
         double brickLength = drawArea.getWidth() / brickOnLine;
-        double brickHgt = brickLength / brickSizeRatio;
+        double brickHeight = brickLength / brickSizeRatio;
 
         brickCount += lineCount / 2;
 
         Brick[] temp  = new Brick[brickCount];
 
-        Dimension brickSize = new Dimension((int) brickLength,(int) brickHgt);
+        Dimension brickSize = new Dimension( (int)brickLength, (int)brickHeight);
         Point point = new Point();
 
         int i;
@@ -79,14 +80,14 @@ class LevelFactory {
             int posX = i % brickOnLine;
             double x = posX * brickLength;
             x =(line % 2 == 0) ? x : (x - (brickLength / 2));
-            double y = (line) * brickHgt;
+            double y = (line) * brickHeight;
             point.setLocation(x,y);
 
             boolean b = ((line % 2 == 0 && i % 2 == 0) || (line % 2 != 0 && posX > centerLeft && posX <= centerRight));
             temp[i] = b ?  makeBrick(point, brickSize, typeA) : makeBrick(point, brickSize, typeB);
         }
 
-        for(double y = brickHgt;i < temp.length;i++, y += 2*brickHgt){
+        for(double y = brickHeight;i < temp.length;i++, y += 2*brickHeight){
             double x = (brickOnLine * brickLength) - (brickLength / 2);
             point.setLocation(x,y);
             temp[i] = makeBrick(point, brickSize, typeA);
