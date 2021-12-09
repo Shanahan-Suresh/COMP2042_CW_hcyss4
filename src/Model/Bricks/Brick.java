@@ -92,6 +92,14 @@ abstract public class Brick  {
         strength--;
         broken = (strength == 0);
     }
+
+    public Color getBorderColor(){
+        return borderColour;
+    }
+
+    public Color getInnerColor(){
+        return innerColour;
+    }
     
 
 }
