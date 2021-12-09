@@ -111,12 +111,10 @@ abstract public class Ball {
     }
 
     public int getSpeedX(){
-
         return speedX;
     }
 
     public int getSpeedY(){
-
         return speedY;
     }
 
@@ -135,5 +133,22 @@ abstract public class Ball {
     public Color getBorderColor(){
         return borderColour;
     }
+
+    public Point2D getUp() {
+        return up;
+    }
+
+    public Point2D getDown() {
+        return down;
+    }
+
+    public Point2D getLeft() {
+        return left;
+    }
+
+    public Point2D getRight() {
+        return right;
+    }
+
 
 }
