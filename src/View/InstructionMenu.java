@@ -25,7 +25,7 @@ public class InstructionMenu extends JComponent implements MouseListener, MouseM
     private Font textFont;
 
     private static final int DEF_WIDTH = 600;
-    private static final int DEF_HEIGHT = 450;
+    private static final int DEF_HEIGHT = 300;
 
     private Rectangle menuFace;
     private Rectangle returnButton;
