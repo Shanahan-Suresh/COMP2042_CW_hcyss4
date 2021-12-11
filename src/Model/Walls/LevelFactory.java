@@ -4,6 +4,7 @@ import Model.Bricks.Brick;
 import Model.Bricks.CementBrick;
 import Model.Bricks.ClayBrick;
 import Model.Bricks.SteelBrick;
+import Model.Bricks.BrickFactory;
 
 
 import java.awt.*;
@@ -101,15 +102,15 @@ class LevelFactory {
 
         switch(type){
             case CLAY:
-                out = new ClayBrick(point,size);
+                out = BrickFactory.getBrickType("CLAY", point, size);
                 break;
 
             case STEEL:
-                out = new SteelBrick(point,size);
+                out = BrickFactory.getBrickType("STEEL", point, size);
                 break;
 
             case CEMENT:
-                out = new CementBrick(point, size);
+                out = BrickFactory.getBrickType("CEMENT", point, size);
                 break;
 
             default:
