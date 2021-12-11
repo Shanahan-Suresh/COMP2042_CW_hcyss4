@@ -20,7 +20,7 @@ package Model.Walls;
 import Model.Balls.*;
 import Model.Bricks.*;
 import Model.Player;
-import static Model.Walls.LevelFactory.*;
+import static Model.Walls.LevelCreate.*;
 import static Model.Walls.WallType.*;
 
 import java.awt.*;

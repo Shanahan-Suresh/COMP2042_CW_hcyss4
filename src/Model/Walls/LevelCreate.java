@@ -1,14 +1,12 @@
 package Model.Walls;
 
 import Model.Bricks.Brick;
-import Model.Bricks.CementBrick;
-import Model.Bricks.ClayBrick;
-import Model.Bricks.SteelBrick;
+import Model.Bricks.BrickFactory;
 
 
 import java.awt.*;
 
-class LevelFactory {
+class LevelCreate {
 
     protected static Brick[] makeSingleTypeLevel(Rectangle drawArea, int brickCount, int lineCount, double brickSizeRatio, WallType type){
         /*
@@ -44,7 +42,7 @@ class LevelFactory {
         for(double y = brickHeight; i < temp.length; i++, y += 2*brickHeight){
             double x = (brickOnLine * brickLength) - (brickLength / 2);
             point.setLocation(x,y);
-            temp[i] = new ClayBrick(point, brickSize);
+            temp[i] = BrickFactory.getBrickType("CLAY", point, brickSize);
         }
 
         return temp;
@@ -101,15 +99,15 @@ class LevelFactory {
 
         switch(type){
             case CLAY:
-                out = new ClayBrick(point,size);
+                out = BrickFactory.getBrickType("CLAY", point, size);
                 break;
 
             case STEEL:
-                out = new SteelBrick(point,size);
+                out = BrickFactory.getBrickType("STEEL", point, size);
                 break;
 
             case CEMENT:
-                out = new CementBrick(point, size);
+                out = BrickFactory.getBrickType("CEMENT", point, size);
                 break;
 
             default:
