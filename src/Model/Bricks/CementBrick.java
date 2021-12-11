@@ -1,5 +1,7 @@
 package Model.Bricks;
 
+import Model.Sounds.SoundFactory;
+
 import java.awt.*;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Point2D;
@@ -28,6 +30,7 @@ public class CementBrick extends Brick {
         if(!super.isBroken()){
             crack.makeCrack(point, direction);
             updateBrick();
+            SoundFactory.getSoundType("CRACK");
             return false;
         }
         return true;
