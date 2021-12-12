@@ -45,7 +45,10 @@ public class Wall {
     private int level;
 
     private Point startPoint;
+
     private int brickCount;
+    private static int brokenBrickCount = 0;
+
     private int ballCount;
     private boolean ballLost;
 
@@ -109,6 +112,7 @@ public class Wall {
             * because for every brick program checks for horizontal and vertical impacts
             */
             brickCount--;
+            brokenBrickCount++;
         }
         else if(impactBorder()) {
             ball.reverseX();
@@ -220,6 +224,10 @@ public class Wall {
 
     public void resetBallCount(){
         ballCount = 3;
+    }
+
+    public static int getBrokenBrickCount() {
+        return brokenBrickCount;
     }
 
 }
