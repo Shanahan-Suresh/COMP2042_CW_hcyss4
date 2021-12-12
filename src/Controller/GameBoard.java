@@ -26,6 +26,7 @@ import Model.Bricks.Brick;
 import Model.Player;
 import Model.Walls.Wall;
 import View.DebugConsole;
+import View.GameFrame;
 
 
 public class GameBoard extends JComponent implements KeyListener, MouseListener, MouseMotionListener {
@@ -43,7 +44,6 @@ public class GameBoard extends JComponent implements KeyListener, MouseListener,
 
     private static final Color BG_COLOR = Color.WHITE;
 
-    private GameTimer showTimer;
     private Timer gameTimer;
 
     private Wall wall;
@@ -62,10 +62,13 @@ public class GameBoard extends JComponent implements KeyListener, MouseListener,
     private int strLen;
 
     private DebugConsole debugConsole;
+    private GameFrame owner;
 
 
-    public GameBoard(JFrame owner){
+    public GameBoard(GameFrame owner){
         super();
+        this.owner = owner; //added to link to other pages
+
         strLen = 0;
         showPauseMenu = false;
 
@@ -101,6 +104,8 @@ public class GameBoard extends JComponent implements KeyListener, MouseListener,
                 wall.wallReset();
                 message = "Game over";
                 GameTimer.setGameStart(false);
+                HighScore.calculateScore();
+                owner.enableHighScorePage(this);
             }
 
             wall.ballReset();
@@ -135,7 +140,7 @@ public class GameBoard extends JComponent implements KeyListener, MouseListener,
         this.addKeyListener(this);
         this.addMouseListener(this);
         this.addMouseMotionListener(this);
-        showTimer = new GameTimer();
+        new GameTimer();
     }
 
 

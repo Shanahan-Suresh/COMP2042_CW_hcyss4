@@ -31,7 +31,7 @@ public class GameFrame extends JFrame implements WindowFocusListener {
 
     private GameBoard gameBoard;
     private HomeMenu homeMenu;
-    private HighScore highScore;
+    private HighScore highScorePage;
     private InstructionMenu instructionMenu;
 
     private boolean gaming;
@@ -46,6 +46,7 @@ public class GameFrame extends JFrame implements WindowFocusListener {
         gameBoard = new GameBoard(this);
         homeMenu = new HomeMenu(this, new Dimension(450,300));
         instructionMenu = new InstructionMenu(this, new Dimension(450, 300));
+        highScorePage = new HighScore(this, new Dimension(450,350));
 
         this.add(homeMenu,BorderLayout.CENTER);
         this.setUndecorated(true);
@@ -75,6 +76,15 @@ public class GameFrame extends JFrame implements WindowFocusListener {
         this.remove(menu);
         this.add(homeMenu, BorderLayout.CENTER);
         this.setUndecorated(false);
+        initialize();
+        this.addWindowFocusListener(this);
+    }
+
+    public void enableHighScorePage(JComponent menu){
+        this.dispose();
+        this.remove(menu);
+        this.add(highScorePage, BorderLayout.CENTER);
+        this.setUndecorated(true);
         initialize();
         this.addWindowFocusListener(this);
     }
