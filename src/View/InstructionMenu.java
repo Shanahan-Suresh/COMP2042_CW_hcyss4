@@ -14,7 +14,7 @@ public class InstructionMenu extends JComponent implements MouseListener, MouseM
     private static final String INSTRUCTION_MAIN = "Goal - Break all the bricks without running out of balls";
     private static final String LEFTMOVE_TEXT = "Press 'A' to move left";
     private static final String RIGHTMOVE_TEXT = "Press 'D' to move right";
-    private static final String PAUSE_TEXT = "Hit the 'Spacebar' to pause";
+    private static final String PAUSE_TEXT = "Hit the 'Spacebar' to pause, 'Esc' to bring up pause menu";
     private static final String DEBUG_CONSOLE_TEXT = "Open up the debug console panel using (Shift + Alt + F1)";
     private static final Color TEXT_COLOR = new Color(54, 201, 73);
     private static final Color CLICKED_BUTTON = Color.BLUE;
@@ -32,9 +32,11 @@ public class InstructionMenu extends JComponent implements MouseListener, MouseM
     private boolean returnClicked;
 
     private GameFrame owner;
+    private Image background;
 
 
     public InstructionMenu(GameFrame owner, Dimension area) {
+
         this.setPreferredSize(new Dimension(DEF_WIDTH,DEF_HEIGHT));
         menuFace = new Rectangle(new Point(0,0),area);
         this.setFocusable(true);
@@ -53,6 +55,10 @@ public class InstructionMenu extends JComponent implements MouseListener, MouseM
         buttonFont = new Font("Monospaced",Font.PLAIN, returnButton.height-2);
     }
 
+    private void drawBackground(Graphics2D g){
+        background = Toolkit.getDefaultToolkit().getImage("src/BG2.png");
+        g.drawImage(background,0,0, getWidth(), getHeight(), this);
+    }
 
     public void paint(Graphics g){
         drawMenu((Graphics2D)g);
@@ -61,6 +67,7 @@ public class InstructionMenu extends JComponent implements MouseListener, MouseM
 
     public void drawMenu(Graphics2D g2d){
 
+        drawBackground(g2d);
         Color prevColor = g2d.getColor();
         Font prevFont = g2d.getFont();
 
@@ -151,7 +158,7 @@ public class InstructionMenu extends JComponent implements MouseListener, MouseM
         FontRenderContext fontRenderContext = g2d.getFontRenderContext();
 
         Rectangle2D instructionsRect = textFont.getStringBounds(PAUSE_TEXT, fontRenderContext);
-        int xText = (int)(menuFace.getWidth() - instructionsRect.getWidth()) / 5;
+        int xText = (int)(menuFace.getWidth() * 1.3 - instructionsRect.getWidth()) / 2;
         int yText = (int)(menuFace.getHeight() / 1.83);
 
         g2d.setFont(textFont);
