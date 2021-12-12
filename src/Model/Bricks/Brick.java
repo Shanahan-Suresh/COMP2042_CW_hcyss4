@@ -1,7 +1,6 @@
 package Model.Bricks;
 
 import Model.Balls.Ball;
-import Model.Sounds.HitSound;
 import Model.Sounds.SoundFactory;
 
 import java.awt.*;
