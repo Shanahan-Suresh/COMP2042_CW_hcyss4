@@ -22,7 +22,7 @@ import java.awt.*;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowFocusListener;
 
-import Controller.GameBoard;
+import Controller.*;
 
 
 public class GameFrame extends JFrame implements WindowFocusListener {
@@ -31,6 +31,7 @@ public class GameFrame extends JFrame implements WindowFocusListener {
 
     private GameBoard gameBoard;
     private HomeMenu homeMenu;
+    private HighScore highScore;
     private InstructionMenu instructionMenu;
 
     private boolean gaming;
@@ -69,9 +70,9 @@ public class GameFrame extends JFrame implements WindowFocusListener {
 
     }
 
-    public void enableHomeMenu() {
+    public void enableHomeMenu(JComponent menu) {
         this.dispose();
-        this.remove(instructionMenu);
+        this.remove(menu);
         this.add(homeMenu, BorderLayout.CENTER);
         this.setUndecorated(false);
         initialize();

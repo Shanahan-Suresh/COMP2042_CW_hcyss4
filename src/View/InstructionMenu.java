@@ -219,7 +219,7 @@ public class InstructionMenu extends JComponent implements MouseListener, MouseM
     public void mouseClicked(MouseEvent e) {
         Point point = e.getPoint();
         if(returnButton.contains(point)){
-            owner.enableHomeMenu();
+            owner.enableHomeMenu(this);
         }
     }
 
