@@ -92,12 +92,12 @@ public class HighScore extends JComponent implements MouseListener, MouseMotionL
     }
 
     public static void fileWrite(){
-        
+
         try {
             FileWriter file = new FileWriter("src/Model/Resources/HighScore.txt");
             file.write("Bricks\tMinutes\tSeconds");
 
-            for(i = 0; i < 9; i++){
+            for(i = 0; i < 8; i++){
                 if(getScore()[i][0] == 0 && getScore()[i][1] == 0 && getScore()[i][2] == 0){
                     break;
                 }
@@ -114,11 +114,11 @@ public class HighScore extends JComponent implements MouseListener, MouseMotionL
     public static void calculateScore(){
         int bricks, Minutes, Seconds;
 
-        if(getScore()[9][0] < Wall.getBrokenBrickCount()){
+        if(getScore()[8][0] < Wall.getBrokenBrickCount()){
 
-            getScore()[9][0] = Wall.getBrokenBrickCount();
-            getScore()[9][1] = GameTimer.getMinutes();
-            getScore()[9][2] = GameTimer.getSeconds();
+            getScore()[8][0] = Wall.getBrokenBrickCount();
+            getScore()[8][1] = GameTimer.getMinutes();
+            getScore()[8][2] = GameTimer.getSeconds();
         }
 
         for (i = 0; i < 9; i++) {
@@ -256,7 +256,7 @@ public class HighScore extends JComponent implements MouseListener, MouseMotionL
         g2d.setFont(textFont);
         g2d.setColor(Color.WHITE);
 
-        for(i = 0; i < 7; i++){
+        for(i = 0; i < 6; i++){
             if(getScore()[i][0] == 0 && getScore()[i][1] == 0 && getScore()[i][2] == 0){
                 break;
             }
