@@ -31,7 +31,7 @@ import java.util.Random;
 
 public class Wall {
 
-    private static final int LEVELS_COUNT = 4;
+    private static final int LEVELS_COUNT = 5;
 
     private Random rnd = new Random();
     private Rectangle area;
@@ -90,6 +90,7 @@ public class Wall {
         temp[1] = makeChessboardLevel(drawArea, brickCount, lineCount, brickDimensionRatio, CLAY, CEMENT);
         temp[2] = makeChessboardLevel(drawArea, brickCount, lineCount, brickDimensionRatio, CLAY, STEEL);
         temp[3] = makeChessboardLevel(drawArea, brickCount, lineCount, brickDimensionRatio, STEEL, CEMENT);
+        temp[4] = makeChessboardLevel(drawArea, brickCount, lineCount, brickDimensionRatio, STEEL, DIAMOND);
 
         return temp;
     }
