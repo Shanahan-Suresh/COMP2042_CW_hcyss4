@@ -110,6 +110,10 @@ class LevelCreate {
                 out = BrickFactory.getBrickType("CEMENT", point, size);
                 break;
 
+            case DIAMOND:
+                out = BrickFactory.getBrickType("DIAMOND", point, size);
+                break;
+
             default:
                 throw new IllegalArgumentException(String.format("Unknown Type:%d\n",type));
         }

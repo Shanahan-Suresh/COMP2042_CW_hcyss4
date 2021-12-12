@@ -6,20 +6,19 @@ import java.awt.*;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Point2D;
 
+public class DiamondBrick extends Brick {
 
-public class CementBrick extends Brick {
+        private static final Color DEF_INNER = new Color(185, 242, 255);
+        private static final Color DEF_BORDER = Color.BLACK;
+        private static final int DIAMOND_STRENGTH = 4;
 
-    private static final Color DEF_INNER = new Color(147, 147, 147);
-    private static final Color DEF_BORDER = new Color(217, 199, 175);
-    private static final int CEMENT_STRENGTH = 2;
+        private Crack crack = new Crack(this, DEF_CRACK_DEPTH, DEF_STEPS);
+        private Shape brickFace = super.brickFace;
 
-    private Crack crack = new Crack(this, DEF_CRACK_DEPTH, DEF_STEPS);
-    private Shape brickFace = super.brickFace;
+        public DiamondBrick(Point point, Dimension size){
+            super(point, size, DEF_BORDER, DEF_INNER, DIAMOND_STRENGTH);
+        }
 
-
-    public CementBrick(Point point, Dimension size){
-        super(point, size, DEF_BORDER, DEF_INNER, CEMENT_STRENGTH);
-    }
 
     @Override
     public boolean setImpact(Point2D point, int direction) {

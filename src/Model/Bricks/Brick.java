@@ -1,5 +1,7 @@
 package Model.Bricks;
+
 import Model.Balls.Ball;
+import Model.Sounds.SoundFactory;
 
 import java.awt.*;
 import java.awt.Point;
@@ -82,6 +84,9 @@ abstract public class Brick  {
     public void impact(){
         strength--;
         broken = (strength == 0);
+        if (broken) {
+            SoundFactory.getSoundType("BRICK");
+        }
     }
 
     public Color getBorderColor(){
