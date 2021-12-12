@@ -56,7 +56,7 @@ public class InstructionMenu extends JComponent implements MouseListener, MouseM
     }
 
     private void drawBackground(Graphics2D g){
-        background = Toolkit.getDefaultToolkit().getImage("src/BG2.png");
+        background = Toolkit.getDefaultToolkit().getImage("src/Model/Resources/BG2.png");
         g.drawImage(background,0,0, getWidth(), getHeight(), this);
     }
 
