@@ -20,10 +20,21 @@ package Model;
 import java.awt.*;
 import Model.Balls.Ball;
 
-
+/**
+ * Player Class
+ * @author Shanahan
+ * @since 09/12/2021
+ */
 public class Player {
 
+    /**
+     * The border color of the player
+     */
     public static final Color BORDER_COLOR = Color.GREEN.darker().darker();
+
+    /**
+     * The inner color of the player
+     */
     public static final Color INNER_COLOR = Color.GREEN;
 
     private static final int DEF_MOVE_AMOUNT = 5;
@@ -35,6 +46,13 @@ public class Player {
     private int max;
 
 
+    /**
+     * Player constructor to create the Player object
+     * @param ballPoint the ball position
+     * @param width the player's container width
+     * @param height the player container height
+     * @param container the player's container, in the shape of a rectangle
+     */
     public Player(Point ballPoint, int width, int height, Rectangle container) {
         this.ballPoint = ballPoint;
         moveAmount = 0;
@@ -49,10 +67,17 @@ public class Player {
         return  new Rectangle(point, new Dimension(width, height));
     }
 
+    /** Method to check for imapct between the player and the ball
+     * @param ball the ball object
+     * @return returns true if ball impacts with player
+     */
     public boolean impact(Ball ball){
         return playerFace.contains(ball.getPosition()) && playerFace.contains(ball.getDown()) ;
     }
 
+    /**
+     * Method to control the player's movement
+     */
     public void move(){
         double x = ballPoint.getX() + moveAmount;
         if(x < min || x > max)
@@ -61,22 +86,38 @@ public class Player {
         playerFace.setLocation(ballPoint.x-(int)playerFace.getWidth() / 2,ballPoint.y);
     }
 
+    /**
+     * Method to move the player left
+     */
     public void moveLeft(){
         moveAmount = -DEF_MOVE_AMOUNT;
     }
 
+    /**
+     * Method to move the player right
+     */
     public void moveRight(){
         moveAmount = DEF_MOVE_AMOUNT;
     }
 
+    /**
+     * Method to stop the player's movements
+     */
     public void stop(){
         moveAmount = 0;
     }
 
+    /**
+     * Returns the player's shape
+     * @return player shaper in the form of a rectangle
+     */
     public Shape getPlayerFace(){
         return  playerFace;
     }
 
+    /**
+     * Method to move the player to a specific coordinate
+     */
     public void moveTo(Point point){
         ballPoint.setLocation(point);
         playerFace.setLocation(ballPoint.x-(int)playerFace.getWidth() / 2, ballPoint.y);
