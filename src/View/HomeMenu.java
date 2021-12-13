@@ -25,7 +25,11 @@ import java.awt.event.MouseMotionListener;
 import java.awt.font.FontRenderContext;
 import java.awt.geom.Rectangle2D;
 
-
+/**
+ * Home Menu Class
+ * @author Shanahan
+ * @since 09/12/2021
+ */
 public class HomeMenu extends JComponent implements MouseListener, MouseMotionListener {
 
     private static final String GREETINGS = "Welcome to";
@@ -60,6 +64,11 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
     private boolean highScoreClicked;
 
 
+    /**
+     * Constructor method to create the home menu
+     * @param owner the game frame, used to link to other menus
+     * @param area the menu's dimensions
+     */
     public HomeMenu(GameFrame owner, Dimension area){
 
         this.setFocusable(true);
@@ -86,6 +95,10 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
     }
 
 
+    /**
+     * Method to paint the home menu, calls drawMenu
+     * @param g the graphics renderer
+     */
     public void paint(Graphics g){
         drawMenu((Graphics2D)g);
     }
@@ -95,6 +108,10 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
         g.drawImage(background,0,0, getWidth(), getHeight(), this);
     }
 
+    /**
+     * Method to draw the home menu
+     * @param g2d the graphics renderer (2D)
+     */
     public void drawMenu(Graphics2D g2d){
 
         drawContainer(g2d);
@@ -280,9 +297,13 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
 
     }
 
+    /**
+     * Method to determine that the mouse was clicked and calls the game frame to link to corresponding menu
+     * @param event the mouse event
+     */
     @Override
-    public void mouseClicked(MouseEvent mouseEvent) {
-        Point point = mouseEvent.getPoint();
+    public void mouseClicked(MouseEvent event) {
+        Point point = event.getPoint();
         if(startButton.contains(point)){
            owner.enableGameBoard();
 
@@ -299,9 +320,13 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
         }
     }
 
+    /**
+     * Method to determine that the mouse was pressed, changes clicked boolean value of corresponding button
+     * @param event the mouse event
+     */
     @Override
-    public void mousePressed(MouseEvent mouseEvent) {
-        Point point = mouseEvent.getPoint();
+    public void mousePressed(MouseEvent event) {
+        Point point = event.getPoint();
         if(startButton.contains(point)){
             startClicked = true;
             repaint(startButton.x,startButton.y,startButton.width+1,startButton.height+1);
@@ -320,8 +345,12 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
         }
     }
 
+    /**
+     * Method to determine that the mouse click was release, changes clicked boolean value of corresponding button
+     * @param event the mouse event
+     */
     @Override
-    public void mouseReleased(MouseEvent mouseEvent) {
+    public void mouseReleased(MouseEvent event) {
         if(startClicked ){
             startClicked = false;
             repaint(startButton.x, startButton.y,startButton.width+1,startButton.height+1);
@@ -341,24 +370,28 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
     }
 
     @Override
-    public void mouseEntered(MouseEvent mouseEvent) {
+    public void mouseEntered(MouseEvent event) {
 
     }
 
     @Override
-    public void mouseExited(MouseEvent mouseEvent) {
+    public void mouseExited(MouseEvent event) {
 
     }
 
 
     @Override
-    public void mouseDragged(MouseEvent mouseEvent) {
+    public void mouseDragged(MouseEvent event) {
 
     }
 
+    /**
+     * Method to determine that the mouse was moved, used to display special cursors
+     * @param event the mouse event
+     */
     @Override
-    public void mouseMoved(MouseEvent mouseEvent) {
-        Point point = mouseEvent.getPoint();
+    public void mouseMoved(MouseEvent event) {
+        Point point = event.getPoint();
         if(startButton.contains(point) || exitButton.contains(point) || instructionButton.contains(point)
                 || highsScoreButton.contains(point))
             this.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));

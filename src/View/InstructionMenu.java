@@ -8,6 +8,11 @@ import java.awt.event.MouseMotionListener;
 import java.awt.font.FontRenderContext;
 import java.awt.geom.Rectangle2D;
 
+/**
+ * Instruction Menu Class
+ * @author Shanahan
+ * @since 09/12/2021
+ */
 public class InstructionMenu extends JComponent implements MouseListener, MouseMotionListener {
 
     private static final String INSTRUCTIONS_TITLE = "How to play";
@@ -35,6 +40,10 @@ public class InstructionMenu extends JComponent implements MouseListener, MouseM
     private Image background;
 
 
+    /** Constructor method to create the instruction menu
+     * @param owner the game frame, used to link to other menus
+     * @param area the menu's dimensions
+     */
     public InstructionMenu(GameFrame owner, Dimension area) {
 
         this.setPreferredSize(new Dimension(DEF_WIDTH,DEF_HEIGHT));
@@ -60,11 +69,18 @@ public class InstructionMenu extends JComponent implements MouseListener, MouseM
         g.drawImage(background,0,0, getWidth(), getHeight(), this);
     }
 
+    /**
+     * Method to paint the instruction menu, calls drawMenu
+     * @param g the graphics renderer
+     */
     public void paint(Graphics g){
         drawMenu((Graphics2D)g);
     }
 
-
+    /**
+     * Method to draw the instruction menu
+     * @param g2d the graphics renderer (2D)
+     */
     public void drawMenu(Graphics2D g2d){
 
         drawBackground(g2d);
@@ -215,25 +231,37 @@ public class InstructionMenu extends JComponent implements MouseListener, MouseM
 
 
 
+    /**
+     * Method to determine that the mouse was clicked and calls the game frame to link to home menu
+     * @param event the mouse event
+     */
     @Override
-    public void mouseClicked(MouseEvent e) {
-        Point point = e.getPoint();
+    public void mouseClicked(MouseEvent event) {
+        Point point = event.getPoint();
         if(returnButton.contains(point)){
             owner.enableHomeMenu(this);
         }
     }
 
+    /**
+     * Method to determine that the mouse was pressed
+     * @param event the mouse event
+     */
     @Override
-    public void mousePressed(MouseEvent e) {
-        Point point = e.getPoint();
+    public void mousePressed(MouseEvent event) {
+        Point point = event.getPoint();
         if(returnButton.contains(point)){
             returnClicked = true;
             repaint(returnButton.x, returnButton.y,returnButton.width+1,returnButton.height+1);
         }
     }
 
+    /**
+     * Method to determine that the mouse click was release
+     * @param event the mouse event
+     */
     @Override
-    public void mouseReleased(MouseEvent e) {
+    public void mouseReleased(MouseEvent event) {
         if(returnClicked){
             returnClicked = false;
             repaint(returnButton.x, returnButton.y,returnButton.width+1,returnButton.height+1);
@@ -255,9 +283,13 @@ public class InstructionMenu extends JComponent implements MouseListener, MouseM
 
     }
 
+    /**
+     * Method to determine that the mouse was moved, used to display special cursors
+     * @param event the mouse event
+     */
     @Override
-    public void mouseMoved(MouseEvent e) {
-        Point point = e.getPoint();
+    public void mouseMoved(MouseEvent event) {
+        Point point = event.getPoint();
 
         if(returnButton.contains(point))
             this.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));

@@ -24,7 +24,11 @@ import java.awt.event.WindowFocusListener;
 
 import Controller.*;
 
-
+/**
+ * Game Frame Class
+ * @author Shanahan
+ * @since 09/12/2021
+ */
 public class GameFrame extends JFrame implements WindowFocusListener {
 
     private static final String DEF_TITLE = "Brick Destroy";
@@ -36,6 +40,9 @@ public class GameFrame extends JFrame implements WindowFocusListener {
 
     private boolean gaming;
 
+    /**
+     * Constructor method to create the Game Frame object via JFrame class
+     */
     public GameFrame(){
         super();
 
@@ -52,6 +59,9 @@ public class GameFrame extends JFrame implements WindowFocusListener {
         this.setUndecorated(true);
     }
 
+    /**
+     * Method to initialize the GameFrame
+     */
     public void initialize(){
         this.setTitle(DEF_TITLE);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -60,6 +70,9 @@ public class GameFrame extends JFrame implements WindowFocusListener {
         this.setVisible(true);
     }
 
+    /**
+     * Method to enable the Game Board and start the game
+     */
     public void enableGameBoard(){
         this.dispose();
         this.remove(homeMenu);
@@ -71,6 +84,10 @@ public class GameFrame extends JFrame implements WindowFocusListener {
 
     }
 
+    /**
+     * Method to enable the Home Menu from another menu
+     * @param menu a JComponent, which is the superclass of any other menu in this game
+     */
     public void enableHomeMenu(JComponent menu) {
         this.dispose();
         this.remove(menu);
@@ -80,6 +97,10 @@ public class GameFrame extends JFrame implements WindowFocusListener {
         this.addWindowFocusListener(this);
     }
 
+    /**
+     * Method to enable the High Score page from another menu
+     * @param menu a JComponent, which is the superclass of any other menu in this game
+     */
     public void enableHighScorePage(JComponent menu){
         this.dispose();
         this.remove(menu);
@@ -89,6 +110,9 @@ public class GameFrame extends JFrame implements WindowFocusListener {
         this.addWindowFocusListener(this);
     }
 
+    /**
+     * Method to enable the Instruction from the Home Menu
+     */
     public void enableInstructionMenu(){
         this.dispose();
         this.remove(homeMenu);
@@ -106,6 +130,10 @@ public class GameFrame extends JFrame implements WindowFocusListener {
         this.setLocation(x, y);
     }
 
+    /**
+     * Method to set that the GameBoard window has gained focus
+     * @param windowEvent the window event status
+     */
     @Override
     public void windowGainedFocus(WindowEvent windowEvent) {
         /*
@@ -119,6 +147,10 @@ public class GameFrame extends JFrame implements WindowFocusListener {
         gaming = true;
     }
 
+    /**
+     * Method to set that the GameBoard window has lost focus
+     * @param windowEvent the window event status
+     */
     @Override
     public void windowLostFocus(WindowEvent windowEvent) {
         if(gaming)

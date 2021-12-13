@@ -23,7 +23,11 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import Model.Walls.Wall;
 
-
+/**
+ * DebugPanel Class
+ * @author Shanahan
+ * @since 09/12/2021
+ */
 public class DebugPanel extends JPanel {
 
     private static final Color DEF_BKG = Color.WHITE;
@@ -36,6 +40,10 @@ public class DebugPanel extends JPanel {
 
     private Wall wall;
 
+    /**
+     * Debug Panel constructor to create the Debug Panel object, handles most of debug menu logic
+     * @param wall the wall object
+     */
     public DebugPanel(Wall wall){
 
         this.wall = wall;
@@ -75,15 +83,28 @@ public class DebugPanel extends JPanel {
         return out;
     }
 
+    /**
+     * Set the ball's x and y movement speed via debug slider
+     * @param x the ball's movement speed on the x-axis
+     * @param y the ball's movement speed on the y-axis
+     */
     public void setValues(int x,int y){
         ballXSpeed.setValue(x);
         ballYSpeed.setValue(y);
     }
 
+    /**
+     * Get the ball's x-axis movement speed
+     * @retunn the ball's movement speed on the x-axis
+     */
     public JSlider getBallSpeedX(){
         return ballXSpeed;
     }
 
+    /**
+     * Get the ball's y-axis movement speed
+     * @retunn the ball's movement speed on the y-axis
+     */
     public JSlider getBallSpeedY(){
         return ballYSpeed;
     }

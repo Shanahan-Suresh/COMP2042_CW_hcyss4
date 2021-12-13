@@ -351,11 +351,11 @@ public class HighScore extends JComponent implements MouseListener, MouseMotionL
 
     /**
      * Method to determine that the mouse was clicked and calls the game frame to link to home menu
-     * @param mouseEvent the mouse event
+     * @param event the mouse event
      */
     @Override
-    public void mouseClicked(MouseEvent mouseEvent) {
-        Point point = mouseEvent.getPoint();
+    public void mouseClicked(MouseEvent event) {
+        Point point = event.getPoint();
         if(returnButton.contains(point)){
             owner.enableHomeMenu(this);
         }
@@ -363,11 +363,11 @@ public class HighScore extends JComponent implements MouseListener, MouseMotionL
 
     /**
      * Method to determine that the mouse was pressed
-     * @param mouseEvent the mouse event
+     * @param event the mouse event
      */
     @Override
-    public void mousePressed(MouseEvent mouseEvent) {
-        Point point = mouseEvent.getPoint();
+    public void mousePressed(MouseEvent event) {
+        Point point = event.getPoint();
         if(returnButton.contains(point)) {
             returnClicked = true;
             repaint(returnButton.x, returnButton.y, returnButton.width + 1, returnButton.height + 1);
@@ -376,10 +376,10 @@ public class HighScore extends JComponent implements MouseListener, MouseMotionL
 
     /**
      * Method to determine that the mouse click was release
-     * @param mouseEvent the mouse event
+     * @param event the mouse event
      */
     @Override
-    public void mouseReleased(MouseEvent mouseEvent) {
+    public void mouseReleased(MouseEvent event) {
         if(returnClicked){
             returnClicked = false;
             repaint(returnButton.x,returnButton.y,returnButton.width+1,returnButton.height+1);
@@ -387,28 +387,28 @@ public class HighScore extends JComponent implements MouseListener, MouseMotionL
     }
 
     @Override
-    public void mouseEntered(MouseEvent mouseEvent) {
+    public void mouseEntered(MouseEvent event) {
 
     }
 
     @Override
-    public void mouseExited(MouseEvent mouseEvent) {
+    public void mouseExited(MouseEvent event) {
 
     }
 
 
     @Override
-    public void mouseDragged(MouseEvent mouseEvent) {
+    public void mouseDragged(MouseEvent event) {
 
     }
 
     /**
      * Method to determine that the mouse was moved, used to display special cursors
-     * @param mouseEvent the mouse event
+     * @param event the mouse event
      */
     @Override
-    public void mouseMoved(MouseEvent mouseEvent) {
-        Point point = mouseEvent.getPoint();
+    public void mouseMoved(MouseEvent event) {
+        Point point = event.getPoint();
         if(returnButton.contains(point))
             this.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         else

@@ -18,9 +18,16 @@
 package View;
 import java.awt.*;
 
-
+/**
+ * Graphics Main Class
+ * @author Shanahan
+ * @since 09/12/2021
+ */
 public class GraphicsMain {
 
+    /**
+     * The main method used to start the game
+     */
     public static void main(String[] args){
 
         EventQueue.invokeLater( () -> {

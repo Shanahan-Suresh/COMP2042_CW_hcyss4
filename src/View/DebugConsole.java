@@ -26,6 +26,11 @@ import Controller.GameBoard;
 import Model.Walls.Wall;
 import Model.Balls.Ball;
 
+/**
+ * Debug Console Class
+ * @author Shanahan
+ * @since 09/12/2021
+ */
 public class DebugConsole extends JDialog implements WindowListener{
 
     private static final String TITLE = "Debug Console";
@@ -37,6 +42,12 @@ public class DebugConsole extends JDialog implements WindowListener{
     private Wall wall;
 
 
+    /**
+     * Debug Console constructor method to generate the Debug Console object
+     * @param owner the game frame, used to link to other menus
+     * @param wall the wall object, sets the level
+     * @param gameBoard the gameboard, to handle logic
+     */
     public DebugConsole(JFrame owner,Wall wall,GameBoard gameBoard){
 
         this.wall = wall;
@@ -45,7 +56,7 @@ public class DebugConsole extends JDialog implements WindowListener{
         initialize();
 
         debugPanel = new DebugPanel(wall);
-        this.add(debugPanel,BorderLayout.CENTER);
+        this.add(debugPanel, BorderLayout.CENTER);
 
         this.pack();
     }
@@ -66,6 +77,10 @@ public class DebugConsole extends JDialog implements WindowListener{
         this.setLocation(x, y);
     }
 
+    /**
+     * Method to reactivate the game window, reset ball speed to original value
+     * @param windowEvent the event of the game window
+     */
     @Override
     public void windowActivated(WindowEvent windowEvent) {
         setLocation();
@@ -79,6 +94,10 @@ public class DebugConsole extends JDialog implements WindowListener{
 
     }
 
+    /**
+     * Method to close the game window, repaints via gameBoard
+     * @param windowEvent the event of the game window
+     */
     @Override
     public void windowClosing(WindowEvent windowEvent) {
         gameBoard.repaint();
