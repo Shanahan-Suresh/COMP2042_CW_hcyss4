@@ -96,8 +96,11 @@ abstract public class Brick  {
     public Color getInnerColor(){
         return innerColour;
     }
-    
 
+
+    public Shape getBrickFace() {
+        return brickFace;
+    }
 }
 
 

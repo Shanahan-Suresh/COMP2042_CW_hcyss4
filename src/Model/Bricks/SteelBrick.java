@@ -57,4 +57,7 @@ public class SteelBrick extends Brick {
         return brickFace;
     }
 
+    public int getStrength() {
+        return STEEL_STRENGTH;
+    }
 }
