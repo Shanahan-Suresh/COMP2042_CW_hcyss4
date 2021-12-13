@@ -151,4 +151,7 @@ abstract public class Ball {
     }
 
 
+    public void setPosition(Point point) {
+        this.center = point;
+    }
 }
