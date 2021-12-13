@@ -1,0 +1,2 @@
+Manifest-Version: 1.0
+Main-Class: com.comp2042_cw_hcyss4.View.GraphicsMain
