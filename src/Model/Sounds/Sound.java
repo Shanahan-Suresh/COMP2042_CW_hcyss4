@@ -5,9 +5,22 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import java.io.File;
 
+/**
+ * Sound Class
+ * @author Shanahan
+ * @since 09/12/2021
+ */
 public class Sound {
-    String sound;
-    Clip audioclip;
+
+    /**
+     * Defines a placeholder variable to hold the sound file
+     */
+    public String sound;
+
+    /**
+     * Defines an object of type Clip to be used to open the sound file
+     */
+    public Clip audioclip;
 
     protected void setFile(String soundFileName){
 

@@ -1,19 +1,28 @@
 package Model.Sounds;
 
+/**
+ * Sound Factory Class
+ * @author Shanahan
+ * @since 09/12/2021
+ */
 public class SoundFactory  {
 
-        public static Sound getSoundType(String soundType){
+    /**
+     * A factory class to instantiate new Sound objects
+     * @return the object created by the constructor of the corresponding called Sound class object
+     */
+    public static Sound getSoundType(String soundType){
 
-            if (soundType == null)
-                return null;
+        if (soundType == null)
+            return null;
 
-            if(soundType.equalsIgnoreCase("BRICK"))
-                return new HitSound();
+        if(soundType.equalsIgnoreCase("BRICK"))
+            return new HitSound();
 
-            else if(soundType.equalsIgnoreCase("CRACK"))
-                return new CrackSound();
+        else if(soundType.equalsIgnoreCase("CRACK"))
+            return new CrackSound();
 
-            else
-                return null;
-        }
+        else
+            return null;
     }
+}
