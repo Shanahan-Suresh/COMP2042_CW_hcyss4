@@ -1,3 +1,5 @@
+package test;
+
 import Model.Walls.Wall;
 import org.junit.jupiter.api.Test;
 

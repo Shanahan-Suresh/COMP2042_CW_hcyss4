@@ -1,3 +1,5 @@
+package test;
+
 import Model.Balls.RubberBall;
 import org.junit.jupiter.api.Test;
 

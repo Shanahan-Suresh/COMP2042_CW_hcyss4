@@ -1,3 +1,5 @@
+package test;
+
 import Model.Player;
 import org.junit.jupiter.api.Test;
 

@@ -1,3 +1,5 @@
+package test;
+
 import Controller.GameTimer;
 import Controller.HighScore;
 import Model.Walls.Wall;

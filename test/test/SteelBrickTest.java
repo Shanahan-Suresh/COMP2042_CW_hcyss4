@@ -1,3 +1,5 @@
+package test;
+
 import Model.Bricks.SteelBrick;
 import org.junit.jupiter.api.Test;
 

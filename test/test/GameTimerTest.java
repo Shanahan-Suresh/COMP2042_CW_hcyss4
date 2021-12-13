@@ -1,3 +1,5 @@
+package test;
+
 import Controller.GameTimer;
 
 import static org.junit.jupiter.api.Assertions.*;

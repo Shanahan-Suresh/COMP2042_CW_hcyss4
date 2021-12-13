@@ -1,3 +1,5 @@
+package test;
+
 import Model.Walls.Wall;
 import View.DebugPanel;
 import org.junit.jupiter.api.Test;
