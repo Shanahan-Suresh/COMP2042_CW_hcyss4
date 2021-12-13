@@ -3,6 +3,11 @@ package Controller;
 import java.util.TimerTask;
 import java.util.Timer;
 
+/**
+ * GameTimer class
+ * @author Shanahan
+ * @since 09/12/2021
+ */
 public class GameTimer {
 
     private static int seconds;
@@ -16,6 +21,9 @@ public class GameTimer {
 
     private static boolean gameStart = false;
 
+    /**
+     * Game Timer constructor to be called when creating the object; is set to increment using via incrementSeconds() method
+     */
     public GameTimer() {
         Timer timer = new Timer();
 
@@ -29,6 +37,9 @@ public class GameTimer {
             }, 0, 1000);
     }
 
+    /**
+     * Method to reset the game timer, values set to 0 or false
+     */
     public static void gameReset(){
         setSeconds(RESET);
         setSecondsCounter(RESET);
@@ -37,6 +48,9 @@ public class GameTimer {
         setGameStart(false);
     }
 
+    /**
+     * Method to increment the second variable by 1, at 60 seconds, minute is incremented by 1
+     */
     public void incrementSeconds(){
         setSeconds(getSeconds() + TIME_INTERVAL);
 
@@ -46,42 +60,82 @@ public class GameTimer {
         }
     }
 
+    /**
+     * Returns the Seconds value of the Game Timer
+     * @return the seconds
+     */
     public static int getSeconds() {
         return seconds;
     }
 
+    /**
+     * Returns the Seconds counter value of the Game Timer
+     * @return the seconds counter value
+     */
     public static int getSecondsCounter(){
         return secondsCounter;
     }
 
+    /**
+     * Returns the Minutes value of the Game Timer
+     * @return the minutes
+     */
     public static int getMinutes() {
         return minutes;
     }
 
+    /**
+     * Returns the Minutes counter value of the Game Timer
+     * @return the minutes counter value
+     */
     public static int getMinutesCounter() {
         return minutesCounter;
     }
 
+    /**
+     * Sets the Seconds value of the Game Timer
+     * @param seconds the new seconds value
+     */
     public static void setSeconds(int seconds) {
         GameTimer.seconds = seconds;
     }
 
+    /**
+     * Sets the Seconds counter value of the Game Timer
+     * @param secondsCounter the new seconds counter value
+     */
     public static void setSecondsCounter(int secondsCounter){
         GameTimer.secondsCounter = secondsCounter;
     }
 
+    /**
+     * Sets the Minutes value of the Game Timer
+     * @param minutes the new minutes value
+     */
     public static void setMinutes(int minutes) {
         GameTimer.minutes = minutes;
     }
 
+    /**
+     * Sets the Minutes counter value of the Game Timer
+     * @param minutesCounter the new minutes counter value
+     */
     public static void setMinutesCounter(int minutesCounter) {
         GameTimer.minutesCounter = minutesCounter;
     }
 
-    public static void setGameStart(boolean gameRunning) {
-        GameTimer.gameStart = gameRunning;
+    /**
+     * Sets the state of the game (started or not)
+     * @param gameStart the state of the game
+     */
+    public static void setGameStart(boolean gameStart) {
+        GameTimer.gameStart = gameStart;
     }
 
+    /**
+     * Returns the state of the game
+     * @return the state of the game (started or not)
+     */
     public static boolean getGameStart() {
         return gameStart;
     }

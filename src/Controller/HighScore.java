@@ -16,7 +16,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
-
+/**
+ * High Score class
+ * @author Shanahan
+ * @since 09/12/2021
+ */
 public class HighScore extends JComponent implements MouseListener, MouseMotionListener {
 
     private Rectangle menuFace;
@@ -42,6 +46,11 @@ public class HighScore extends JComponent implements MouseListener, MouseMotionL
     private static final Color CLICKED_BUTTON = Color.GREEN;
     private static final String RETURN_TEXT = "Return";
 
+    /**
+     * High Score constructor to be called when creating the High Score object, consist of menu page and score methods
+     * @param owner the game frame, used to link to other menus
+     * @param area the area of the high score display
+     */
     public HighScore(GameFrame owner, Dimension area){
 
         this.setFocusable(true);
@@ -70,6 +79,9 @@ public class HighScore extends JComponent implements MouseListener, MouseMotionL
         fileRead();
     }
 
+    /**
+     * Method to read the scores from a text file and store to an array
+     */
     public static void fileRead(){
         i = 0;
         try{
@@ -91,6 +103,9 @@ public class HighScore extends JComponent implements MouseListener, MouseMotionL
         }
     }
 
+    /**
+     * Method to write the scores to a text file from an array
+     */
     public static void fileWrite(){
 
         try {
@@ -111,6 +126,9 @@ public class HighScore extends JComponent implements MouseListener, MouseMotionL
         }
     }
 
+    /**
+     * Method to calculate and order the high scores via arrays, the new order is then written to file
+     */
     public static void calculateScore(){
         int bricks, Minutes, Seconds;
 
@@ -181,19 +199,35 @@ public class HighScore extends JComponent implements MouseListener, MouseMotionL
         fileWrite();
     }
 
+    /**
+     * Method to return a 2D array of scores
+     * @return 2D array of scores
+     */
     public static int[][] getScore() {
         return score;
     }
 
+    /**
+     * Method to set a 2D array of scores
+     * @param score the 2D array to be set
+     */
     public static void setScore(int[][] score) {
         HighScore.score = score;
     }
 
+    /**
+     * Method to paint the high score menu, calls drawMenu
+     * @param g the graphics renderer
+     */
     public void paint(Graphics g){
         drawMenu((Graphics2D)g);
     }
 
 
+    /**
+     * Method to draw the high score menu
+     * @param g2d the graphics renderer (2D)
+     */
     public void drawMenu(Graphics2D g2d){
 
         drawContainer(g2d);
@@ -315,6 +349,10 @@ public class HighScore extends JComponent implements MouseListener, MouseMotionL
         }
     }
 
+    /**
+     * Method to determine that the mouse was clicked and calls the game frame to link to home menu
+     * @param mouseEvent the mouse event
+     */
     @Override
     public void mouseClicked(MouseEvent mouseEvent) {
         Point point = mouseEvent.getPoint();
@@ -323,6 +361,10 @@ public class HighScore extends JComponent implements MouseListener, MouseMotionL
         }
     }
 
+    /**
+     * Method to determine that the mouse was pressed
+     * @param mouseEvent the mouse event
+     */
     @Override
     public void mousePressed(MouseEvent mouseEvent) {
         Point point = mouseEvent.getPoint();
@@ -332,6 +374,10 @@ public class HighScore extends JComponent implements MouseListener, MouseMotionL
         }
     }
 
+    /**
+     * Method to determine that the mouse click was release
+     * @param mouseEvent the mouse event
+     */
     @Override
     public void mouseReleased(MouseEvent mouseEvent) {
         if(returnClicked){
@@ -356,6 +402,10 @@ public class HighScore extends JComponent implements MouseListener, MouseMotionL
 
     }
 
+    /**
+     * Method to determine that the mouse was moved, used to display special cursors
+     * @param mouseEvent the mouse event
+     */
     @Override
     public void mouseMoved(MouseEvent mouseEvent) {
         Point point = mouseEvent.getPoint();

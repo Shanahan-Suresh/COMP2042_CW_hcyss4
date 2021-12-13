@@ -28,7 +28,11 @@ import Model.Walls.Wall;
 import View.DebugConsole;
 import View.GameFrame;
 
-
+/**
+ * GameBoard Class
+ * @author Shanahan
+ * @since 09/12/2021
+ */
 public class GameBoard extends JComponent implements KeyListener, MouseListener, MouseMotionListener {
 
     private static final String CONTINUE = "Continue";
@@ -65,6 +69,10 @@ public class GameBoard extends JComponent implements KeyListener, MouseListener,
     private GameFrame owner;
 
 
+    /**
+     * GameBoard constructor to create the GameBoard object, handles most of the game logic
+     * @param owner the game frame, used to link to other menus
+     */
     public GameBoard(GameFrame owner){
         super();
         this.owner = owner; //added to link to other pages
@@ -144,6 +152,10 @@ public class GameBoard extends JComponent implements KeyListener, MouseListener,
     }
 
 
+    /**
+     * Method to draw the gameboard scene
+     * @param g the graphics controller
+     */
     public void paint(Graphics g){
 
         Graphics2D g2d = (Graphics2D) g;
@@ -292,6 +304,10 @@ public class GameBoard extends JComponent implements KeyListener, MouseListener,
     public void keyTyped(KeyEvent keyEvent) {
     }
 
+    /**
+     * Method to detect the key pressed and call its corresponding intended method
+     * @param keyEvent the pressed key
+     */
     @Override
     public void keyPressed(KeyEvent keyEvent) {
         switch(keyEvent.getKeyCode()){
@@ -343,11 +359,19 @@ public class GameBoard extends JComponent implements KeyListener, MouseListener,
         }
     }
 
+    /**
+     * Method to determine that the key is released, stops the player movements
+     * @param keyEvent the key
+     */
     @Override
     public void keyReleased(KeyEvent keyEvent) {
         wall.player.stop();
     }
 
+    /**
+     * Method to determine that the mouse was clicked and calls its corresponding intended methods
+     * @param mouseEvent the mouse event
+     */
     @Override
     public void mouseClicked(MouseEvent mouseEvent) {
         Point p = mouseEvent.getPoint();
@@ -401,6 +425,10 @@ public class GameBoard extends JComponent implements KeyListener, MouseListener,
 
     }
 
+    /**
+     * Method to determine that the mouse was moved, used to display special cursors
+     * @param mouseEvent the mouse event
+     */
     @Override
     public void mouseMoved(MouseEvent mouseEvent) {
         Point point = mouseEvent.getPoint();
@@ -417,6 +445,9 @@ public class GameBoard extends JComponent implements KeyListener, MouseListener,
         }
     }
 
+    /**
+     * Method to pause/stop the game
+     */
     public void onLostFocus(){
         gameTimer.stop();
         GameTimer.setGameStart(false);
