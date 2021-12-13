@@ -80,4 +80,12 @@ public class DebugPanel extends JPanel {
         ballYSpeed.setValue(y);
     }
 
+    public JSlider getBallSpeedX(){
+        return ballXSpeed;
+    }
+
+    public JSlider getBallSpeedY(){
+        return ballYSpeed;
+    }
+
 }
