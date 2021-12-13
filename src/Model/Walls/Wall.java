@@ -28,7 +28,11 @@ import java.awt.geom.Point2D;
 import java.util.Random;
 
 
-
+/**
+ * Wall Class
+ * @author Shanahan
+ * @since 09/12/2021
+ */
 public class Wall {
 
     private static final int LEVELS_COUNT = 5;
@@ -36,9 +40,24 @@ public class Wall {
     private Random rnd = new Random();
     private Rectangle area;
 
+    /**
+     * Array of brick objects to create wall with
+     */
     public Brick[] bricks;
+
+    /**
+     * Crack object for setting impacts to any bricks in wall
+     */
     public Crack crack;
+
+    /**
+     * Ball object
+     */
     public Ball ball;
+
+    /**
+     * A player object to handle player movement and behaviour
+     */
     public Player player;
 
     private Brick[][] levels;
@@ -52,6 +71,14 @@ public class Wall {
     private int ballCount;
     private boolean ballLost;
 
+    /**
+     * Ball constructor to be called when creating a Wall object and boundaries based on parameters
+     * @param drawArea the play area in the shape of a rectangle
+     * @param brickCount the level's brick count
+     * @param lineCount the number of brick lines in a level
+     * @param brickDimensionRatio the brick dimension ratio
+     * @param ballPosition the ball's x and y coordinates
+     */
     public Wall(Rectangle drawArea, int brickCount, int lineCount, double brickDimensionRatio, Point ballPosition){
 
         this.startPoint = new Point(ballPosition);
@@ -98,11 +125,17 @@ public class Wall {
         return temp;
     }
 
+    /**
+     * Method to move the player and ball
+     */
     public void move(){
         player.move();
         ball.move();
     }
 
+    /**
+     * Method to locate impacts between the ball and other objects (bricks/wall/player)
+     */
     public void findImpacts(){
         if(player.impact(ball)){
             ball.reverseY();
@@ -159,18 +192,34 @@ public class Wall {
         return ((p.getX() < area.getX()) ||(p.getX() > (area.getX() + area.getWidth())));
     }
 
+    /**
+     * Returns remaining brick count value
+     * @return brickCount
+     */
     public int getBrickCount(){
         return brickCount;
     }
 
+    /**
+     * Returns remaining ball value
+     * @return ballCount
+     */
     public int getBallCount(){
         return ballCount;
     }
 
+
+    /**
+     * Returns state of ball (lost or not)
+     * @return ballLost
+     */
     public boolean isBallLost(){
         return ballLost;
     }
 
+    /**
+     * Method to reset the position of the ball
+     */
     public void ballReset(){
         player.moveTo(startPoint);
         ball.moveTo(startPoint);
@@ -190,45 +239,82 @@ public class Wall {
         ballLost = false;
     }
 
+    /**
+     * Method to rebuild the entire wall
+     */
     public void wallReset(){
-        for(Brick b : bricks)
-            b.repair();
+        for(Brick brick : bricks)
+            brick.repair();
         brickCount = bricks.length;
         ballCount = 3;
     }
 
+    /**
+     * Method to set the ball count to 0
+     * @return ballCount as 0
+     */
     public boolean ballEnd(){
         return ballCount == 0;
     }
 
+    /**
+     * Method to set the brick count to 0
+     * @return brickCount as 0
+     */
     public boolean isDone(){
         return brickCount == 0;
     }
 
+    /**
+     * Method to invoke the next level
+     */
     public void nextLevel(){
         bricks = levels[level++];
         this.brickCount = bricks.length;
     }
 
+    /**
+     * Method to check that there are more levels remaining
+     * @return true if there are more levels
+     */
     public boolean hasLevel(){
         return level < levels.length;
     }
 
+    /**
+     * Sets the ball's x-axis speed
+     * @param speed the speed of the ball along the x-axis
+     */
     public void setBallXSpeed(int speed){
         ball.setSpeedX(speed);
     }
 
+    /**
+     * Sets the ball's y-axis speed
+     * @param speed the speed of the ball along the y-axis
+     */
     public void setBallYSpeed(int speed){
         ball.setSpeedY(speed);
     }
 
+    /**
+     * Resets the ball count to 3
+     */
     public void resetBallCount(){
         ballCount = 3;
     }
 
+    /**
+     * Allocates the number of broken bricks
+     */
     public static void setBrokenBrickCount(int count) {
         brokenBrickCount = count;
     }
+
+    /**
+     * Returns the number of broken bricks
+     * @return number of broken bricks
+     */
     public static int getBrokenBrickCount() {
         return brokenBrickCount;
     }

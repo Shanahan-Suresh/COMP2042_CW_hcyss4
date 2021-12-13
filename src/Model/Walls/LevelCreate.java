@@ -6,8 +6,21 @@ import Model.Bricks.BrickFactory;
 
 import java.awt.*;
 
-class LevelCreate {
+/**
+ * Level Create Class
+ * @author Shanahan
+ * @since 09/12/2021
+ */
+public class LevelCreate {
 
+    /** Generates a level with consisting of only one brick type
+     * @param drawArea the level shape
+     * @param brickCount the number of bricks in the level
+     * @param lineCount the number of brick rows
+     * @param brickSizeRatio the brick size ratio in comparison to the window
+     * @param type the brick type
+     * @return array of bricks
+     */
     protected static Brick[] makeSingleTypeLevel(Rectangle drawArea, int brickCount, int lineCount, double brickSizeRatio, WallType type){
         /*
           if brickCount is not divisible by line count,brickCount is adjusted to the biggest
@@ -48,6 +61,15 @@ class LevelCreate {
         return temp;
     }
 
+    /** Generates a level with two types of bricks
+     * @param drawArea the level shape
+     * @param brickCount the number of bricks in the level
+     * @param lineCount the number of brick rows
+     * @param brickSizeRatio the brick size ratio in comparison to the window
+     * @param typeA the 1st brick type
+     * @param typeB the 2nd brick type
+     * @return array of bricks
+     */
     protected static Brick[] makeChessboardLevel(Rectangle drawArea, int brickCount, int lineCount, double brickSizeRatio, WallType typeA, WallType typeB){
         /*
           if brickCount is not divisible by line count,brickCount is adjusted to the biggest
