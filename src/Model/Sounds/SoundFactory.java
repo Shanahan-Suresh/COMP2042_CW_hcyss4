@@ -9,6 +9,7 @@ public class SoundFactory  {
 
     /**
      * A factory class to instantiate new Sound objects
+     * @param soundType the name for the type of sound to be created
      * @return the object created by the constructor of the corresponding called Sound class object
      */
     public static Sound getSoundType(String soundType){

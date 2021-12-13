@@ -95,7 +95,7 @@ public class DebugPanel extends JPanel {
 
     /**
      * Get the ball's x-axis movement speed
-     * @retunn the ball's movement speed on the x-axis
+     * @return the ball's movement speed on the x-axis
      */
     public JSlider getBallSpeedX(){
         return ballXSpeed;
@@ -103,7 +103,7 @@ public class DebugPanel extends JPanel {
 
     /**
      * Get the ball's y-axis movement speed
-     * @retunn the ball's movement speed on the y-axis
+     * @return the ball's movement speed on the y-axis
      */
     public JSlider getBallSpeedY(){
         return ballYSpeed;
