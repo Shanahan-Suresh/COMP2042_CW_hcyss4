@@ -15,7 +15,7 @@ class SteelBrickTest {
 
     @Test
     void getBrickFace() {
-        assertEquals(brickFace, steelBrick.getBrickFace()); //verify the SteelBrick object type is a Rectangle
+        assertEquals(brickFace, steelBrick.getBrick()); //verify the SteelBrick object type is a Rectangle
     }
 
     @Test

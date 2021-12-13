@@ -5,32 +5,71 @@ import java.awt.geom.GeneralPath;
 import java.awt.geom.Point2D;
 import java.util.Random;
 
+/**
+ * Crack Class
+ * @author Shanahan
+ * @since 09/12/2021
+ */
 public class Crack {
-        private static final int CRACK_SECTIONS = 3;
-        private static final double JUMP_PROBABILITY = 0.7;
+    private static final int CRACK_SECTIONS = 3;
+    private static final double JUMP_PROBABILITY = 0.7;
 
-        public static final int LEFT = 10;
-        public static final int RIGHT = 20;
-        public static final int UP = 30;
-        public static final int DOWN = 40;
-        public static final int VERTICAL = 100;
-        public static final int HORIZONTAL = 200;
+    /**
+     * Integer value start generating a crack from the left side of the brick
+     */
+    public static final int LEFT = 10;
 
-        private static Random rnd = new Random();
-        private final Brick brick;
+    /**
+     * Integer value start generating a crack from the right side of the brick
+     */
+    public static final int RIGHT = 20;
 
-        private GeneralPath crack;
-        private int crackDepth;
-        private int steps;
+    /**
+     * Integer value start generating a crack from the top side of the brick
+     */
+    public static final int UP = 30;
+
+    /**
+     * Integer value start generating a crack from the bottom side of the brick
+     */
+    public static final int DOWN = 40;
+
+    /**
+     * Integer value for the crack to be generated vertically
+     */
+    public static final int VERTICAL = 100;
+
+    /**
+     * Integer indicator for the crack to be generated horizontally
+     */
+    public static final int HORIZONTAL = 200;
+
+    private static Random rnd = new Random();
+    private final Brick brick;
+
+    private GeneralPath crack;
+    private int crackDepth;
+    private int steps;
 
 
-        public Crack(Brick brick, int crackDepth, int steps){
-            this.brick = brick;
-            crack = new GeneralPath();
-            this.crackDepth = crackDepth;
-            this.steps = steps;
-        }
+    /**
+     * Crack constructor to create a new geometric path in a brick based on parameters
+     * @param brick the brick object
+     * @param crackDepth the value of the depth of the crack
+     * @param steps the number of steps to be taken when generating a crack
+     */
+    public Crack(Brick brick, int crackDepth, int steps){
+        this.brick = brick;
+        crack = new GeneralPath();
+        this.crackDepth = crackDepth;
+        this.steps = steps;
+    }
 
+    /**
+     * Generates a visible crack on the brick object based on the parameters
+     * @param point the X and Y coordinats of the starting point of the crack
+     * @param direction the direction the crack is generated at
+     */
     protected void makeCrack(Point2D point, int direction){
         Rectangle bounds = brick.brickFace.getBounds();
         Point impact = new Point((int)point.getX(),(int)point.getY());
@@ -70,6 +109,11 @@ public class Crack {
         }
     }
 
+    /**
+     * Generates a visible crack on the brick based on the parameters
+     * @param start the starting point of the crack
+     * @param end the ending point of the crack
+     */
     protected void makeCrack(Point start, Point end){
 
         GeneralPath path = new GeneralPath();
@@ -120,7 +164,7 @@ public class Crack {
 
     }
 
-    private Point makeRandomPoint(Point from,Point to, int direction){
+    private Point makeRandomPoint(Point from, Point to, int direction){
 
         Point out = new Point();
         int position;
@@ -139,10 +183,17 @@ public class Crack {
         return out;
     }
 
+    /**
+     * Method to return the geometric path taken by the crack
+     * @return the geometric path taken by the crack
+     */
     public GeneralPath draw(){
         return crack;
     }
 
+    /**
+     * Method to reset the state of the crack
+     */
     public void reset(){
             crack.reset();
     }
