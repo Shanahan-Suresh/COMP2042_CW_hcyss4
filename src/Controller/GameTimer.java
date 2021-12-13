@@ -81,4 +81,8 @@ public class GameTimer {
     public static void setGameStart(boolean gameRunning) {
         GameTimer.gameStart = gameRunning;
     }
+
+    public static boolean getGameStart() {
+        return gameStart;
+    }
 }
