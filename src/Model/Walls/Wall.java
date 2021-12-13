@@ -226,6 +226,9 @@ public class Wall {
         ballCount = 3;
     }
 
+    public static void setBrokenBrickCount(int count) {
+        brokenBrickCount = count;
+    }
     public static int getBrokenBrickCount() {
         return brokenBrickCount;
     }
